@@ -8,7 +8,8 @@ import (
 	"log"
 	"testing"
 
-	_ "github.com/ClickHouse/clickhouse-go"
+	_ "github.com/mailru/go-clickhouse"
+	//_ "github.com/ClickHouse/clickhouse-go"
 	"github.com/dhui/dktest"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/clickhouse"

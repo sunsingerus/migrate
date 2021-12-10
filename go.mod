@@ -4,7 +4,6 @@ require (
 	cloud.google.com/go/spanner v1.27.0
 	cloud.google.com/go/storage v1.10.0
 	github.com/Azure/go-autorest/autorest/adal v0.9.16
-	github.com/ClickHouse/clickhouse-go v1.4.3
 	github.com/Microsoft/go-winio v0.5.0 // indirect
 	github.com/apache/arrow/go/arrow v0.0.0-20211013220434-5962184e7a30 // indirect
 	github.com/aws/aws-sdk-go v1.17.7
@@ -34,6 +33,7 @@ require (
 	github.com/klauspost/compress v1.13.6 // indirect
 	github.com/ktrysmt/go-bitbucket v0.6.4
 	github.com/lib/pq v1.10.0
+	github.com/mailru/go-clickhouse v1.7.0
 	github.com/markbates/pkger v0.15.1
 	github.com/mattn/go-sqlite3 v1.14.6
 	github.com/moby/term v0.0.0-20210619224110-3f7ff695adc6 // indirect

@@ -12,7 +12,9 @@ import (
 
 	"go.uber.org/atomic"
 
-	"github.com/golang-migrate/migrate/v4"
+	_ "github.com/mailru/go-clickhouse"
+
+	//"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database"
 	"github.com/golang-migrate/migrate/v4/database/multistmt"
 	"github.com/hashicorp/go-multierror"
@@ -73,9 +75,12 @@ func (ch *ClickHouse) Open(dsn string) (database.Driver, error) {
 	if err != nil {
 		return nil, err
 	}
-	q := migrate.FilterCustomQuery(purl)
-	q.Scheme = "tcp"
-	conn, err := sql.Open("clickhouse", q.String())
+	//q := migrate.FilterCustomQuery(purl)
+	//q.Scheme = "tcp"
+	//q.Scheme = "http"
+	//conn, err := sql.Open("clickhouse", q.String())
+	dsn = strings.Replace(dsn, "clickhouse://", "", 1)
+	conn, err := sql.Open("clickhouse", dsn)
 	if err != nil {
 		return nil, err
 	}
@@ -100,7 +105,8 @@ func (ch *ClickHouse) Open(dsn string) (database.Driver, error) {
 			MigrationsTableEngine: migrationsTableEngine,
 			DatabaseName:          purl.Query().Get("database"),
 			ClusterName:           purl.Query().Get("x-cluster-name"),
-			MultiStatementEnabled: purl.Query().Get("x-multi-statement") == "true",
+			//MultiStatementEnabled: purl.Query().Get("x-multi-statement") == "true",
+			MultiStatementEnabled: true,
 			MultiStatementMaxSize: multiStatementMaxSize,
 		},
 	}
